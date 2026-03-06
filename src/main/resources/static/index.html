@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central de Inteligência de Produto (CIP)</title>
+    <title>Nexus de Produto (CIP)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -16,46 +16,28 @@
                     <img src="https://i.pravatar.cc/150?img=11" alt="Profile" class="profile-img">
                 </div>
                 <div class="app-title">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="sidebar-text">Gestão de Pessoas | HCM</span>
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span class="sidebar-text">Nexus de Produto</span>
                 </div>
             </div>
 
             <div class="sidebar-toggle" id="sidebarToggle">
                 <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
-                <span class="sidebar-text">Meu desempenho</span>
+                <span class="sidebar-text">Navegação Principal</span>
             </div>
 
             <nav class="sidebar-nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="sidebar-text">Minhas metas e resultados</span>
-                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                        <a href="#" class="nav-link active">
+                            <span class="sidebar-text">Dashboard CIP (Widgets)</span>
+                            <i class="fa-solid fa-chart-pie icon-right sidebar-text"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="sidebar-text">Minhas avaliações por compe...</span>
-                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="sidebar-text">Feedbacks</span>
-                            <i class="fa-solid fa-chevron-right icon-right sidebar-text"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="sidebar-text">Meu PDI</span>
-                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="sidebar-text">Minhas Avaliações</span>
-                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                            <span class="sidebar-text">Motor Spec (Vibecode)</span>
+                            <i class="fa-solid fa-code icon-right sidebar-text"></i>
                         </a>
                     </li>
                 </ul>
@@ -63,17 +45,8 @@
 
             <div class="sidebar-icons-only">
                 <ul class="icons-list">
-                    <li><a href="#"><i class="fa-solid fa-bell"><span class="badge">2</span></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-star"></i></a></li>
-                    <li><a href="#" class="active"><i class="fa-solid fa-users"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-handshake"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-briefcase"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-backpack"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-bullseye"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="#" class="active"><i class="fa-solid fa-chart-pie"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-code"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-ellipsis"></i></a></li>
                 </ul>
             </div>
@@ -89,66 +62,172 @@
             <header class="top-header">
                 <div class="header-left">
                      <div class="main-logo-area">
-                        <span class="logo-icon">S</span>
-                        <span class="logo-text">Senior</span>
+                        <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                        <span class="logo-text">Vibecode</span>
                     </div>
                 </div>
                 <div class="header-middle">
-                    <h1>Gestão de pessoas</h1>
+                    <h1>Central de Inteligência de Produto (CIP)</h1>
                 </div>
                 <div class="header-right">
-                    <button class="btn btn-outline"><i class="fa-solid fa-magnifying-glass"></i> Buscar pessoas</button>
-                    <button class="btn btn-outline"><i class="fa-solid fa-table-cells"></i> Analytics <i class="fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-robot"></i> Gerar Spec (IA)</button>
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="page-content">
+            <main class="page-content cip-nexus-layout">
                 <div class="content-header">
-                    <h2>Adicionar objetivo</h2>
+                    <h2>Spec-Generator: Ponto → Medicina Ocupacional (SST)</h2>
                     <div class="breadcrumbs">
-                        <i class="fa-solid fa-house"></i> > Gestão de pessoas > Gestão de desempenho > <a href="#">Meu plano de desenvolvimento</a> > Adicionar objetivo
+                        <i class="fa-solid fa-house"></i> > Nexus > Especificação Técnica
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <h3>OBJETIVO</h3>
+                <div class="nexus-container" style="flex-direction: column;">
 
-                        <button class="btn btn-primary btn-generate">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i> Gerar sugestão de PDI
-                        </button>
-
-                        <div class="form-group">
-                            <label>Descreva o objetivo: <span class="required">*</span></label>
-                            <textarea rows="3" placeholder="Ex.: Aperfeiçoar a competência de comunicação sendo capaz de fazer uma apresentação..."></textarea>
+                    <!-- 1. Objetivo da Spec -->
+                    <div class="card mb-20">
+                        <div class="card-header spec-header">
+                            <h3><i class="fa-solid fa-bullseye"></i> 1. Objetivo da Spec</h3>
                         </div>
-
-                        <div class="form-group">
-                            <label>Critério de sucesso</label>
-                            <textarea rows="3" placeholder="Ex.: Ser capaz de falar em público..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Prazo <span class="required">*</span></label>
-                            <input type="text" placeholder="__/__/____" class="input-date">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Competência envolvida:</label>
-                            <select>
-                                <option value=""></option>
-                            </select>
+                        <div class="card-body">
+                            <p style="font-size: 14px; line-height: 1.6; color: #333;">
+                                Automatizar a convocação de <strong>Exame de Retorno ao Trabalho</strong> (NR-7) e o registro de <strong>Afastamentos</strong> (eSocial S-2230) a partir de atestados lançados no Ponto.
+                            </p>
                         </div>
                     </div>
+
+                    <div style="display: flex; gap: 20px;">
+
+                        <!-- 2. Data Schema -->
+                        <div class="card" style="flex: 1;">
+                            <div class="card-header spec-header">
+                                <h3><i class="fa-solid fa-database"></i> 2. Data Schema (Entidades Principais)</h3>
+                            </div>
+                            <div class="card-body">
+<div class="code-block">
+<pre><code>{
+  "AtestadoPonto": {
+    "funcionario_id": "UUID",
+    "data_inicio": "Date",
+    "quantidade_dias": "Integer",
+    "cid_codigo": "String (Optional)",
+    "status": "Enum [Pendente, Validado, Rejeitado]"
+  },
+  "EventoOcupacional": {
+    "tipo": "Enum [Retorno_Trabalho, Afastamento_eSocial]",
+    "status_convocacao": "Enum [Agendado, Nao_Necessario]",
+    "prazo_limite": "Date"
+  }
+}</code></pre>
+</div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Logic Engine & 4. Fluxo IA -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+
+                            <!-- Regras de Negocio -->
+                            <div class="card">
+                                <div class="card-header spec-header">
+                                    <h3><i class="fa-solid fa-code-branch"></i> 3. Regras de Negócio (Logic Engine)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.6;">
+                                        <li style="margin-bottom: 10px;">
+                                            <strong>Gatilho de Afastamento (eSocial):</strong><br>
+                                            <span class="code-block-inline">IF (AtestadoPonto.quantidade_dias > 0)</span><br>
+                                            <em>Ação:</em> Gerar rascunho do evento S-2230 para a Folha de Pagamento.
+                                        </li>
+                                        <li>
+                                            <strong>Gatilho de Exame (NR-7):</strong><br>
+                                            <span class="code-block-inline">IF (AtestadoPonto.quantidade_dias >= 30)</span><br>
+                                            <em>Ação:</em> Criar EventoOcupacional tipo Retorno_Trabalho.<br>
+                                            <em>Prazo:</em> AtestadoPonto.data_inicio + AtestadoPonto.quantidade_dias.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Fluxo IA -->
+                            <div class="card">
+                                <div class="card-header spec-header bg-chat-header" style="background-color: #313131;">
+                                    <h3 style="color: white;"><i class="fa-solid fa-robot"></i> 4. Fluxo de IA (Interface de Demanda)</h3>
+                                </div>
+                                <div class="card-body" style="background-color: #f9f9f9;">
+                                    <ol style="font-size: 13px; line-height: 1.6; color: #555; padding-left: 20px;">
+                                        <li><strong>Agente de Validação:</strong> Recebe a foto do atestado/input do RH.</li>
+                                        <li><strong>OCR & Analisador:</strong> Extrai datas e CID.</li>
+                                        <li><strong>Sugestor de Spec:</strong> Se o usuário pedir "quero que avise o médico", a IA gera o código: <span class="code-block-inline" style="background: #e2e8f0; color: #333;">Notify(medico_trabalho, "Novo afastamento > 30 dias")</span>.</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 5. Dashboard Mockup -->
+                    <div class="card mt-20">
+                        <div class="card-header spec-header">
+                            <h3><i class="fa-solid fa-chart-pie"></i> 5. Visualização do Dashboard (Mockup Técnico)</h3>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="dashboard-grid">
+                                <!-- Widget A -->
+                                <div class="widget-card warning">
+                                    <div class="widget-header">
+                                        <h3><i class="fa-solid fa-file-signature"></i> Atestados Pendentes (Ponto)</h3>
+                                        <span class="widget-badge bg-warning">5 Pendentes</span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <ul class="status-list">
+                                            <li><span>Carlos Silva (CID M54.5) - 32 dias</span></li>
+                                            <li><span>Ana Paula (CID F32.0) - 45 dias</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Widget B -->
+                                <div class="widget-card danger">
+                                    <div class="widget-header">
+                                        <h3><i class="fa-solid fa-user-doctor"></i> Exames de Retorno (Pós-30 dias)</h3>
+                                        <span class="widget-badge bg-danger">2 Atrasados</span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <ul class="status-list">
+                                            <li><span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> João Mendes - Atraso 2 dias</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Widget C -->
+                                <div class="widget-card success">
+                                    <div class="widget-header">
+                                        <h3><i class="fa-solid fa-file-invoice"></i> Status de Sincronização (eSocial)</h3>
+                                        <span class="widget-badge bg-success">S-2230 Online</span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="esocial-status">
+                                            <div class="stat-item"><span class="stat-num text-success">142</span><span class="stat-label">Enviados</span></div>
+                                            <div class="stat-item"><span class="stat-num text-danger">0</span><span class="stat-label">Erros</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
+
             </main>
         </div>
 
         <!-- Right Action Bar -->
         <div class="right-action-bar">
-            <button class="action-btn"><i class="fa-solid fa-bullhorn"></i></button>
-            <button class="action-btn"><i class="fa-solid fa-circle-question"></i></button>
+            <button class="action-btn" title="Dashboards"><i class="fa-solid fa-chart-pie"></i></button>
+            <button class="action-btn" title="Configurações do Agente"><i class="fa-solid fa-gear"></i></button>
         </div>
     </div>
 

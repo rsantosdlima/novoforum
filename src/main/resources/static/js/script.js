@@ -43,11 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.classList.add('active');
             });
 
-            // Hide all views and show target view
+            // Hide all views and show target view (Using inline styles to avoid CSS caching issues)
             viewSections.forEach(section => {
                 section.classList.remove('active');
+                section.style.display = 'none';
             });
-            document.getElementById(targetId).classList.add('active');
+
+            const activeSection = document.getElementById(targetId);
+            activeSection.classList.add('active');
+
+            // Force flex or block explicitly depending on the view to override any CSS cache
+            if(targetId === 'view-dashboard' || targetId === 'view-chat' || targetId === 'view-backlog') {
+                 activeSection.style.display = 'flex';
+                 activeSection.style.flexDirection = 'column';
+            } else {
+                 activeSection.style.display = 'block';
+            }
 
             // Update Header Title
             if(titleMap[targetId]) {

@@ -191,8 +191,8 @@ body {
 .content-header h2 { font-size: 24px; color: #333; font-weight: 600; margin-bottom: 5px; }
 
 /* View Management */
-.view-section { display: none; animation: fadeIn 0.3s ease-in-out; }
-.view-section.active { display: block; }
+.view-section { display: none; animation: fadeIn 0.3s ease-in-out; flex-direction: column; }
+.view-section.active { display: flex; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

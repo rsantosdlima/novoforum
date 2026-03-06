@@ -99,55 +99,82 @@
 
                     <div style="display: flex; gap: 20px;">
 
-                        <!-- 2. Data Schema -->
-                        <div class="card" style="flex: 1;">
+                        <!-- 2 & 3. API Spec OpenAPI (Data Schema e Logic Engine Integrados) -->
+                        <div class="card" style="flex: 2;">
                             <div class="card-header spec-header">
-                                <h3><i class="fa-solid fa-database"></i> 2. Data Schema (Entidades Principais)</h3>
+                                <h3><i class="fa-solid fa-code"></i> 2. API Spec: Integração Ponto ↔ Medicina (Pronto para Vibecode)</h3>
+                                <button class="btn-xs btn-primary"><i class="fa-solid fa-copy"></i> Copiar Spec</button>
                             </div>
                             <div class="card-body">
 <div class="code-block">
 <pre><code>{
-  "AtestadoPonto": {
-    "funcionario_id": "UUID",
-    "data_inicio": "Date",
-    "quantidade_dias": "Integer",
-    "cid_codigo": "String (Optional)",
-    "status": "Enum [Pendente, Validado, Rejeitado]"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Gestão de Afastamentos e Retorno ao Trabalho",
+    "version": "1.0.0",
+    "description": "Automatização de gatilhos de SST baseados em registros de Ponto Eletrônico."
   },
-  "EventoOcupacional": {
-    "tipo": "Enum [Retorno_Trabalho, Afastamento_eSocial]",
-    "status_convocacao": "Enum [Agendado, Nao_Necessario]",
-    "prazo_limite": "Date"
+  "paths": {
+    "/atestados/registrar": {
+      "post": {
+        "summary": "Recebe o atestado do Ponto e dispara lógica de SST",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtestadoInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Gatilhos de conformidade processados com sucesso."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AtestadoInput": {
+        "type": "object",
+        "properties": {
+          "funcionario_id": { "type": "string", "format": "uuid" },
+          "data_inicio": { "type": "string", "format": "date" },
+          "dias_afastamento": { "type": "integer", "example": 32 },
+          "cid": { "type": "string", "example": "M54.5" }
+        },
+        "required": ["funcionario_id", "data_inicio", "dias_afastamento"]
+      }
+    },
+    "x-vibecode-logic": {
+      "triggers": [
+        {
+          "condition": "dias_afastamento >= 30",
+          "action": "CREATE_SST_EVENT",
+          "params": {
+            "tipo": "EXAME_RETORNO_TRABALHO",
+            "prazo": "data_inicio + dias_afastamento",
+            "notificar": ["Medico_Trabalho", "Gestor_RH"]
+          }
+        },
+        {
+          "condition": "dias_afastamento > 0",
+          "action": "SYNC_ESOCIAL_S2230",
+          "params": { "status": "RASCUNHO_PENDENTE" }
+        }
+      ]
+    }
   }
 }</code></pre>
 </div>
                             </div>
                         </div>
 
-                        <!-- 3. Logic Engine & 4. Fluxo IA -->
+                        <!-- 4. Fluxo IA -->
                         <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
 
-                            <!-- Regras de Negocio -->
-                            <div class="card">
-                                <div class="card-header spec-header">
-                                    <h3><i class="fa-solid fa-code-branch"></i> 3. Regras de Negócio (Logic Engine)</h3>
-                                </div>
-                                <div class="card-body">
-                                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.6;">
-                                        <li style="margin-bottom: 10px;">
-                                            <strong>Gatilho de Afastamento (eSocial):</strong><br>
-                                            <span class="code-block-inline">IF (AtestadoPonto.quantidade_dias > 0)</span><br>
-                                            <em>Ação:</em> Gerar rascunho do evento S-2230 para a Folha de Pagamento.
-                                        </li>
-                                        <li>
-                                            <strong>Gatilho de Exame (NR-7):</strong><br>
-                                            <span class="code-block-inline">IF (AtestadoPonto.quantidade_dias >= 30)</span><br>
-                                            <em>Ação:</em> Criar EventoOcupacional tipo Retorno_Trabalho.<br>
-                                            <em>Prazo:</em> AtestadoPonto.data_inicio + AtestadoPonto.quantidade_dias.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
 
                             <!-- Fluxo IA -->
                             <div class="card">

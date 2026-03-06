@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus de Produto (CIP)</title>
+    <title>Nexus CIP - Portal de Inteligência</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -17,27 +17,38 @@
                 </div>
                 <div class="app-title">
                     <i class="fa-solid fa-network-wired"></i>
-                    <span class="sidebar-text">Nexus de Produto</span>
+                    <span class="sidebar-text">Nexus | Produto</span>
                 </div>
             </div>
 
             <div class="sidebar-toggle" id="sidebarToggle">
                 <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
-                <span class="sidebar-text">Navegação Principal</span>
+                <span class="sidebar-text">Recolher Menu</span>
             </div>
 
             <nav class="sidebar-nav">
+                <div class="nav-section-title">CANAIS DE ENTRADA</div>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <span class="sidebar-text">Dashboard CIP (Widgets)</span>
-                            <i class="fa-solid fa-chart-pie icon-right sidebar-text"></i>
+                        <a href="#" class="nav-link active" data-target="view-chat">
+                            <span class="sidebar-text">Relatar Problema (IA)</span>
+                            <i class="fa-solid fa-comments icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-section-title mt-20">VISÃO ESTRATÉGICA</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-target="view-dashboard">
+                            <span class="sidebar-text">Dashboard de Insights</span>
+                            <i class="fa-solid fa-chart-line icon-right sidebar-text"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="sidebar-text">Motor Spec (Vibecode)</span>
-                            <i class="fa-solid fa-code icon-right sidebar-text"></i>
+                        <a href="#" class="nav-link" data-target="view-backlog">
+                            <span class="sidebar-text">Features & Specs (Jira)</span>
+                            <i class="fa-solid fa-list-check icon-right sidebar-text"></i>
                         </a>
                     </li>
                 </ul>
@@ -45,14 +56,11 @@
 
             <div class="sidebar-icons-only">
                 <ul class="icons-list">
-                    <li><a href="#" class="active"><i class="fa-solid fa-chart-pie"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-code"></i></a></li>
+                    <li><a href="#" class="nav-icon active" data-target="view-chat" title="Relatar Problema"><i class="fa-solid fa-comments"></i></a></li>
+                    <li><a href="#" class="nav-icon" data-target="view-dashboard" title="Dashboard"><i class="fa-solid fa-chart-line"></i></a></li>
+                    <li><a href="#" class="nav-icon" data-target="view-backlog" title="Backlog Jira"><i class="fa-solid fa-list-check"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-ellipsis"></i></a></li>
                 </ul>
-            </div>
-
-            <div class="sidebar-footer-logo">
-                 <div class="s-logo"></div>
             </div>
         </aside>
 
@@ -63,91 +71,233 @@
                 <div class="header-left">
                      <div class="main-logo-area">
                         <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                        <span class="logo-text">Vibecode</span>
+                        <span class="logo-text">Vibecode CIP</span>
                     </div>
                 </div>
                 <div class="header-middle">
-                    <h1>Central de Inteligência de Produto (CIP)</h1>
+                    <h1 id="headerTitle">Portal de Coleta Unificado</h1>
                 </div>
                 <div class="header-right">
-                    <button class="btn btn-primary"><i class="fa-solid fa-robot"></i> Gerar Spec (IA)</button>
+                    <div class="user-role-badge">Perfil: Comercial / CS</div>
                 </div>
             </header>
 
-            <!-- Page Content -->
-            <main class="page-content cip-nexus-layout">
-                <div class="content-header">
-                    <h2>Spec-Generator: Ponto → Medicina Ocupacional (SST)</h2>
-                    <div class="breadcrumbs">
-                        <i class="fa-solid fa-house"></i> > Nexus > Especificação Técnica
+            <!-- Page Content Views -->
+            <main class="page-content">
+
+                <!-- VIEW 1: CHAT IA (Entrada de Demandas) -->
+                <div id="view-chat" class="view-section active">
+                    <div class="content-header">
+                        <h2>Analista de Requisitos IA</h2>
+                        <p class="text-muted">Descreva a dor do cliente, atrito de suporte ou oportunidade de venda. A IA refinará o cenário.</p>
+                    </div>
+
+                    <div class="chat-container card">
+                        <div class="chat-history" id="chatHistory">
+                            <!-- Bot Message -->
+                            <div class="chat-msg bot-msg">
+                                <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                                <div class="msg-bubble">
+                                    Olá! Sou seu Assistente de Produto. Que dor, melhoria ou bug você gostaria de relatar hoje? Tente me dar o máximo de contexto sobre o impacto no cliente!
+                                </div>
+                            </div>
+
+                            <!-- User Message -->
+                            <div class="chat-msg user-msg">
+                                <div class="msg-bubble">
+                                    "Perdemos duas vendas na semana passada porque nosso sistema de Ponto não envia os atestados maiores que 30 dias automaticamente para a Folha e Medicina (SST). O cliente não quer fazer isso na mão para evitar multas."
+                                </div>
+                                <div class="msg-avatar"><img src="https://i.pravatar.cc/150?img=33" alt="Vendedor"></div>
+                            </div>
+
+                            <!-- Bot Message (Refinamento) -->
+                            <div class="chat-msg bot-msg">
+                                <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                                <div class="msg-bubble">
+                                    <strong>Refinamento de Requisito:</strong> Entendi a dor! A integração manual do SST gera risco de compliance no eSocial (S-2230). <br><br>
+                                    Para eu montar a especificação correta para o time de produto: Além de enviar para a Folha, o sistema de Ponto deve gerar automaticamente um agendamento de <strong>Exame de Retorno ao Trabalho (NR-7)</strong> na Medicina Ocupacional?
+                                </div>
+                            </div>
+
+                            <!-- User Message -->
+                            <div class="chat-msg user-msg">
+                                <div class="msg-bubble">
+                                    Exatamente! Tem que gerar o rascunho do S-2230 na Folha e o alerta do exame NR-7 para o médico do trabalho.
+                                </div>
+                                <div class="msg-avatar"><img src="https://i.pravatar.cc/150?img=33" alt="Vendedor"></div>
+                            </div>
+
+                            <!-- Bot Message (Conclusão e Impacto) -->
+                            <div class="chat-msg bot-msg">
+                                <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                                <div class="msg-bubble">
+                                    <div class="alert-success">
+                                        <i class="fa-solid fa-check-circle"></i> <strong>Solicitação Catalogada com Sucesso!</strong>
+                                    </div>
+                                    <p>Eu transformei o seu relato na <strong>Spec #4092 (Integração Ponto-SST)</strong>.</p>
+                                    <ul style="margin-top: 10px; margin-left: 20px; font-size: 13px;">
+                                        <li><strong>Contexto:</strong> Interoperabilidade Folha x Ponto x SST</li>
+                                        <li><strong>Ticket Support Reduction:</strong> Estimativa de -12% chamados mensais sobre S-2230</li>
+                                        <li><strong>ARR Impactado (Vendas Salvas):</strong> R$ 14.500,00 / mês</li>
+                                    </ul>
+                                    <p style="margin-top: 10px;">O time de produto já pode visualizar essa demanda no Dashboard de Insights!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <input type="text" placeholder="Digite sua solicitação ou responda a IA..." disabled value="Conversa finalizada e catalogada.">
+                            <button class="btn btn-primary" disabled><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="nexus-container" style="flex-direction: column;">
 
-                    <!-- 1. Objetivo da Spec -->
-                    <div class="card mb-20">
-                        <div class="card-header spec-header">
-                            <h3><i class="fa-solid fa-bullseye"></i> 1. Objetivo da Spec</h3>
+                <!-- VIEW 2: DASHBOARD DE INSIGHTS -->
+                <div id="view-dashboard" class="view-section" style="display: none;">
+                    <div class="content-header">
+                        <h2>Impacto e Priorização de Demandas</h2>
+                        <p class="text-muted">Matriz de cruzamento automático: Onde devemos investir tempo de engenharia?</p>
+                    </div>
+
+                    <!-- KPIs -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card danger">
+                            <div class="kpi-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                            <div class="kpi-info">
+                                <h3>R$ 342.000</h3>
+                                <span>ARR em Risco (Oportunidades Perdidas/Churn)</span>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p style="font-size: 14px; line-height: 1.6; color: #333;">
-                                Automatizar a convocação de <strong>Exame de Retorno ao Trabalho</strong> (NR-7) e o registro de <strong>Afastamentos</strong> (eSocial S-2230) a partir de atestados lançados no Ponto.
-                            </p>
+                        <div class="kpi-card warning">
+                            <div class="kpi-icon"><i class="fa-solid fa-headset"></i></div>
+                            <div class="kpi-info">
+                                <h3>- 28%</h3>
+                                <span>Redução Prevista de Chamados (Se Top 5 entregue)</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card success">
+                            <div class="kpi-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                            <div class="kpi-info">
+                                <h3>12</h3>
+                                <span>Vácuos de Integração Detectados</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 20px;">
-
-                        <!-- 2 & 3. API Spec OpenAPI (Data Schema e Logic Engine Integrados) -->
+                    <div style="display: flex; gap: 20px; margin-top: 20px;">
+                        <!-- TOP Dores -->
                         <div class="card" style="flex: 2;">
-                            <div class="card-header spec-header">
-                                <h3><i class="fa-solid fa-code"></i> 2. API Spec: Integração Ponto ↔ Medicina (Pronto para Vibecode)</h3>
-                                <button class="btn-xs btn-primary"><i class="fa-solid fa-copy"></i> Copiar Spec</button>
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-fire"></i> Matriz de Priorização (Por Contexto de Negócio)</h3>
+                            </div>
+                            <div class="card-body" style="padding: 0;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Contexto do Produto</th>
+                                            <th>Dores Relatadas</th>
+                                            <th>Risco Compliance</th>
+                                            <th>Impacto ARR</th>
+                                            <th>Ação Recomendada</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="highlight-row">
+                                            <td><strong>Ponto ↔ Medicina (SST)</strong><br><span style="font-size: 11px; color: #666;">Falta de automação de atestados longos</span></td>
+                                            <td>42 tickets suporte<br>8 feedbacks vendas</td>
+                                            <td><span class="badge badge-danger">Alto (eSocial/Multa)</span></td>
+                                            <td>R$ 14.500/mês</td>
+                                            <td><button class="btn-xs btn-primary">Ver Spec Gerada</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Financeiro ↔ Ponto</strong><br><span style="font-size: 11px; color: #666;">Banco de horas retroativo de CCTs</span></td>
+                                            <td>18 tickets suporte<br>12 feedbacks vendas</td>
+                                            <td><span class="badge badge-warning">Médio</span></td>
+                                            <td>R$ 9.000/mês</td>
+                                            <td><button class="btn-xs btn-outline">Analisar Contexto</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Admissão ↔ Folha</strong><br><span style="font-size: 11px; color: #666;">Dependentes sem CPF bloqueando cálculo</span></td>
+                                            <td>150 tickets suporte</td>
+                                            <td><span class="badge badge-success">Baixo</span></td>
+                                            <td>Churn: 1 Cliente</td>
+                                            <td><button class="btn-xs btn-outline">Analisar Contexto</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Categorização IA -->
+                        <div class="card" style="flex: 1;">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-tags"></i> Catalogação por Assunto</h3>
                             </div>
                             <div class="card-body">
-<div class="code-block">
+                                <ul class="category-list">
+                                    <li><span>Interoperabilidade eSocial</span> <span class="badge">38%</span></li>
+                                    <li><span>Erros de Usabilidade (UX)</span> <span class="badge">22%</span></li>
+                                    <li><span>Legislação Trabalhista (CCTs)</span> <span class="badge">15%</span></li>
+                                    <li><span>Lentidão / Performance</span> <span class="badge">15%</span></li>
+                                    <li><span>Novas Telas (CRUD)</span> <span class="badge">10%</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- VIEW 3: BACKLOG / SPEC GENERATOR -->
+                <div id="view-backlog" class="view-section" style="display: none;">
+                    <div class="content-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div>
+                            <h2>Visão de Produto: Especificações IA</h2>
+                            <p class="text-muted">Demandas traduzidas em Specs técnicas e cenários de teste prontas para o Jira.</p>
+                        </div>
+                        <button class="btn btn-primary" style="background-color: #0052CC; border-color: #0052CC;">
+                            <i class="fa-brands fa-jira"></i> Exportar Epic para o Jira
+                        </button>
+                    </div>
+
+                    <div class="card feature-card">
+                        <div class="card-header feature-header">
+                            <div>
+                                <span class="badge badge-success" style="margin-right: 10px;">Spec Pronta</span>
+                                <h3 style="display: inline-block;">Feature: Integração de Atestados > 30 Dias (Ponto ↔ SST)</h3>
+                            </div>
+                            <div style="font-size: 12px; color: #666;">Origem: Refinamento IA (Vendas/Suporte)</div>
+                        </div>
+
+                        <div class="card-body feature-body">
+                            <!-- User Story & Testes -->
+                            <div class="feature-left">
+                                <h4>1. História de Usuário (User Story)</h4>
+                                <div class="story-box">
+                                    "Como gestor de SST, quero que o atestado médico aprovado no Ponto dispare automaticamente um alerta de exame de retorno ao trabalho no módulo de Medicina e gere o rascunho do S-2230 na Folha, para evitar multas de conformidade."
+                                </div>
+
+                                <h4 class="mt-20">2. Cenários de Teste (BDD / Gherkin)</h4>
+                                <div class="test-box">
+                                    <strong>Cenário 1:</strong> Atestado longo gera eventos em cascata<br>
+                                    <span style="color: #c678dd;">Dado</span> que o funcionário "João" tem um atestado validado no Ponto<br>
+                                    <span style="color: #e5c07b;">E</span> a quantidade de dias do atestado é 32<br>
+                                    <span style="color: #61afef;">Quando</span> o sistema processar a integração diária<br>
+                                    <span style="color: #98c379;">Então</span> um rascunho do evento eSocial "S-2230" deve ser criado na Folha<br>
+                                    <span style="color: #98c379;">E</span> um "Exame de Retorno (NR-7)" deve ser agendado no módulo de Medicina Ocupacional
+                                </div>
+                            </div>
+
+                            <!-- Vibecode JSON -->
+                            <div class="feature-right">
+                                <h4>3. Motor de Regras Vibecode (JSON Spec)</h4>
+                                <div class="code-block" style="font-size: 11px;">
 <pre><code>{
   "openapi": "3.0.0",
   "info": {
-    "title": "API de Gestão de Afastamentos e Retorno ao Trabalho",
-    "version": "1.0.0",
-    "description": "Automatização de gatilhos de SST baseados em registros de Ponto Eletrônico."
-  },
-  "paths": {
-    "/atestados/registrar": {
-      "post": {
-        "summary": "Recebe o atestado do Ponto e dispara lógica de SST",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AtestadoInput"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Gatilhos de conformidade processados com sucesso."
-          }
-        }
-      }
-    }
+    "title": "Integração Ponto-SST"
   },
   "components": {
-    "schemas": {
-      "AtestadoInput": {
-        "type": "object",
-        "properties": {
-          "funcionario_id": { "type": "string", "format": "uuid" },
-          "data_inicio": { "type": "string", "format": "date" },
-          "dias_afastamento": { "type": "integer", "example": 32 },
-          "cid": { "type": "string", "example": "M54.5" }
-        },
-        "required": ["funcionario_id", "data_inicio", "dias_afastamento"]
-      }
-    },
     "x-vibecode-logic": {
       "triggers": [
         {
@@ -155,8 +305,7 @@
           "action": "CREATE_SST_EVENT",
           "params": {
             "tipo": "EXAME_RETORNO_TRABALHO",
-            "prazo": "data_inicio + dias_afastamento",
-            "notificar": ["Medico_Trabalho", "Gestor_RH"]
+            "notificar": ["Medico_Trabalho"]
           }
         },
         {
@@ -168,93 +317,13 @@
     }
   }
 }</code></pre>
-</div>
-                            </div>
-                        </div>
-
-                        <!-- 4. Fluxo IA -->
-                        <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
-
-
-                            <!-- Fluxo IA -->
-                            <div class="card">
-                                <div class="card-header spec-header bg-chat-header" style="background-color: #313131;">
-                                    <h3 style="color: white;"><i class="fa-solid fa-robot"></i> 4. Fluxo de IA (Interface de Demanda)</h3>
-                                </div>
-                                <div class="card-body" style="background-color: #f9f9f9;">
-                                    <ol style="font-size: 13px; line-height: 1.6; color: #555; padding-left: 20px;">
-                                        <li><strong>Agente de Validação:</strong> Recebe a foto do atestado/input do RH.</li>
-                                        <li><strong>OCR & Analisador:</strong> Extrai datas e CID.</li>
-                                        <li><strong>Sugestor de Spec:</strong> Se o usuário pedir "quero que avise o médico", a IA gera o código: <span class="code-block-inline" style="background: #e2e8f0; color: #333;">Notify(medico_trabalho, "Novo afastamento > 30 dias")</span>.</li>
-                                    </ol>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-                    <!-- 5. Dashboard Mockup -->
-                    <div class="card mt-20">
-                        <div class="card-header spec-header">
-                            <h3><i class="fa-solid fa-chart-pie"></i> 5. Visualização do Dashboard (Mockup Técnico)</h3>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="dashboard-grid">
-                                <!-- Widget A -->
-                                <div class="widget-card warning">
-                                    <div class="widget-header">
-                                        <h3><i class="fa-solid fa-file-signature"></i> Atestados Pendentes (Ponto)</h3>
-                                        <span class="widget-badge bg-warning">5 Pendentes</span>
-                                    </div>
-                                    <div class="widget-body">
-                                        <ul class="status-list">
-                                            <li><span>Carlos Silva (CID M54.5) - 32 dias</span></li>
-                                            <li><span>Ana Paula (CID F32.0) - 45 dias</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Widget B -->
-                                <div class="widget-card danger">
-                                    <div class="widget-header">
-                                        <h3><i class="fa-solid fa-user-doctor"></i> Exames de Retorno (Pós-30 dias)</h3>
-                                        <span class="widget-badge bg-danger">2 Atrasados</span>
-                                    </div>
-                                    <div class="widget-body">
-                                        <ul class="status-list">
-                                            <li><span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> João Mendes - Atraso 2 dias</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Widget C -->
-                                <div class="widget-card success">
-                                    <div class="widget-header">
-                                        <h3><i class="fa-solid fa-file-invoice"></i> Status de Sincronização (eSocial)</h3>
-                                        <span class="widget-badge bg-success">S-2230 Online</span>
-                                    </div>
-                                    <div class="widget-body">
-                                        <div class="esocial-status">
-                                            <div class="stat-item"><span class="stat-num text-success">142</span><span class="stat-label">Enviados</span></div>
-                                            <div class="stat-item"><span class="stat-num text-danger">0</span><span class="stat-label">Erros</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
 
             </main>
-        </div>
-
-        <!-- Right Action Bar -->
-        <div class="right-action-bar">
-            <button class="action-btn" title="Dashboards"><i class="fa-solid fa-chart-pie"></i></button>
-            <button class="action-btn" title="Configurações do Agente"><i class="fa-solid fa-gear"></i></button>
         </div>
     </div>
 

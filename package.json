@@ -1,0 +1,11 @@
+{
+  "name": "cip-prototype",
+  "version": "1.0.0",
+  "description": "CIP Static Prototype",
+  "scripts": {
+    "start": "http-server src/main/resources/static -p 8080 -a 0.0.0.0 --cors -c-1"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

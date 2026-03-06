@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Inteligência de Produto (CIP)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <!-- Sidebar / Menu Lateral -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Profile" class="profile-img">
+                </div>
+                <div class="app-title">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-text">Gestão de Pessoas | HCM</span>
+                </div>
+            </div>
+
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+                <span class="sidebar-text">Meu desempenho</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="sidebar-text">Minhas metas e resultados</span>
+                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="sidebar-text">Minhas avaliações por compe...</span>
+                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="sidebar-text">Feedbacks</span>
+                            <i class="fa-solid fa-chevron-right icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="sidebar-text">Meu PDI</span>
+                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="sidebar-text">Minhas Avaliações</span>
+                            <i class="fa-regular fa-star icon-right sidebar-text"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-icons-only">
+                <ul class="icons-list">
+                    <li><a href="#"><i class="fa-solid fa-bell"><span class="badge">2</span></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-star"></i></a></li>
+                    <li><a href="#" class="active"><i class="fa-solid fa-users"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-handshake"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-briefcase"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-backpack"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-bullseye"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-ellipsis"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-footer-logo">
+                 <div class="s-logo"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content" id="mainContent">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                     <div class="main-logo-area">
+                        <span class="logo-icon">S</span>
+                        <span class="logo-text">Senior</span>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <h1>Gestão de pessoas</h1>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-outline"><i class="fa-solid fa-magnifying-glass"></i> Buscar pessoas</button>
+                    <button class="btn btn-outline"><i class="fa-solid fa-table-cells"></i> Analytics <i class="fa-solid fa-caret-down"></i></button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="page-content">
+                <div class="content-header">
+                    <h2>Adicionar objetivo</h2>
+                    <div class="breadcrumbs">
+                        <i class="fa-solid fa-house"></i> > Gestão de pessoas > Gestão de desempenho > <a href="#">Meu plano de desenvolvimento</a> > Adicionar objetivo
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3>OBJETIVO</h3>
+
+                        <button class="btn btn-primary btn-generate">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Gerar sugestão de PDI
+                        </button>
+
+                        <div class="form-group">
+                            <label>Descreva o objetivo: <span class="required">*</span></label>
+                            <textarea rows="3" placeholder="Ex.: Aperfeiçoar a competência de comunicação sendo capaz de fazer uma apresentação..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Critério de sucesso</label>
+                            <textarea rows="3" placeholder="Ex.: Ser capaz de falar em público..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Prazo <span class="required">*</span></label>
+                            <input type="text" placeholder="__/__/____" class="input-date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Competência envolvida:</label>
+                            <select>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Right Action Bar -->
+        <div class="right-action-bar">
+            <button class="action-btn"><i class="fa-solid fa-bullhorn"></i></button>
+            <button class="action-btn"><i class="fa-solid fa-circle-question"></i></button>
+        </div>
+    </div>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
